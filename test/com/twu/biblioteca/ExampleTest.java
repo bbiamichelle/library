@@ -10,4 +10,11 @@ public class ExampleTest {
     public void test() {
         assertEquals(1, 1);
     }
+
+    @Test
+    public void testWelcome(){
+        Library library = new Library();
+        assertEquals("Welcome", library.printWelcome());
+    }
+
 }
