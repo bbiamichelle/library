@@ -1,9 +1,16 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        Library library = new Library();
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(new Book("TDD","Kent", 2005));
+        bookList.add(new Book("Design Patterns","Fowler", 2004));
+        Library library = new Library(bookList);
         System.out.println(library.printWelcome());
+        System.out.printf(library.printTable());
     }
 }
