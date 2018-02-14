@@ -20,7 +20,7 @@ public class LibraryTest {
     @Test
     public void testWelcome(){
         List<Book> bookList = new ArrayList<>();
-        Library library = new Library(bookList);
+        Library library = new Library();
         assertEquals("Welcome", library.printWelcome());
     }
 
@@ -37,27 +37,31 @@ public class LibraryTest {
     @Test
     public void testPrintBookList(){
         List<Book> bookList = new ArrayList<>();
-        Library library = new Library(bookList);
-        Book book1 = new Book("TDD","Kent", 2005);
-        bookList.add(book1);
-        assertEquals("TDD\t-\tKent\t-\t2005", library.printBookList());
+        Library library = new Library();
+        bookList.add(new Book("TDD","Kent", 2005));
+        library.setBookList(bookList);
+        assertEquals(String.format("%20s %20s %20s","TDD", "Kent", "2005" ),library.printBookList());
     }
 
     @Test
     public void testPrintManyBooks(){
         List<Book> bookList = new ArrayList<>();
-        Library library = new Library(bookList);
+        Library library = new Library();
         bookList.add(new Book("TDD","Kent", 2005));
         bookList.add(new Book("Design Patterns","Fowler", 2004));
-        assertEquals("TDD\t-\tKent\t-\t2005\nDesign Patterns\t-\tFowler\t-\t2004", library.printBookList());
+        library.setBookList(bookList);
+        assertEquals(String.format("%20s %20s %20s\n%20s %20s %20s",
+                "TDD", "Kent", "2005", "Design Patterns", "Fowler", "2004"), library.printBookList());
     }
 
     @Test
     public void testPrintTable() {
         List<Book> bookList = new ArrayList<>();
-        Library library = new Library(bookList);
-        Book book1 = new Book("TDD", "Kent", 2005);
-        bookList.add(book1);
-        assertEquals(" \tName \tAuthors \tYears\n\tTDD \tKent \t2005", library.printTable());
+        Library library = new Library();
+        bookList.add(new Book("TDD","Kent", 2005));
+        bookList.add(new Book("Design Patterns","Fowler", 2004));
+        library.setBookList(bookList);
+        assertEquals(String.format("%20s %20s %20s\n%20s %20s %20s\n%20s %20s %20s",
+                "Name","Authors", "Years", "TDD", "Kent", "2005", "Design Patterns", "Fowler", "2004"), library.printTable());
     }
 }

@@ -9,8 +9,9 @@ public class BibliotecaApp {
         List<Book> bookList = new ArrayList<>();
         bookList.add(new Book("TDD","Kent", 2005));
         bookList.add(new Book("Design Patterns","Fowler", 2004));
-        Library library = new Library(bookList);
+        Library library = new Library();
+        library.setBookList(bookList);
         System.out.println(library.printWelcome());
-        System.out.printf(library.printTable());
+        System.out.println(library.printTable());
     }
 }

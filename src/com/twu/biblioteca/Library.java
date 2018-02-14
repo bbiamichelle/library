@@ -1,13 +1,11 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    List<Book> bookList;
 
-    public Library (List<Book> bookList){
-        this.bookList = bookList;
-    }
+    List<Book> bookList = new ArrayList<>();
 
     public String printWelcome() {
         return "Welcome"; }
@@ -31,6 +29,10 @@ public class Library {
     public String printTable() {
         String representation = String.format("%20s %20s %20s\n", "Name", "Authors", "Years");
         return representation + printBookList();
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 }
 
