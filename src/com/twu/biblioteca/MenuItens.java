@@ -9,38 +9,32 @@ public class MenuItens  {
     }
 
     public void printMenuItens() {
+        System.out.println("\tWELCOME");
         System.out.println("\t**Menu**");
-        System.out.println("Selecione: (1) para Consultar livros e (0) para Sair. ");
-        System.out.println("Opcao:");
+        System.out.println("Select: (1) to browse books and (0) to exit. ");
+        System.out.println("Option:");
     }
 
-    public void showOption(){
-        int input = 1;
-        if (input != 0) {
+    public void showOption(int input){
+        if (input >= 0) {
             int option;
             option = input;
 
             switch (option) {
                 case 1:
-                    consulta();
+                    System.out.println(library.showBookTable());
                     break;
 
-                case 2:
-                    sair();
+                case 0:
+                    System.out.println("See you  later!");
                     break;
 
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Select a valid option!");
             }
         }
     }
 
-    public void consulta() {
-        System.out.println(library.printBookList());
-    }
-
-    public static void sair() {
-    }
 }
 
 

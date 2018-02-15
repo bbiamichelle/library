@@ -1,19 +1,22 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(new Book("TDD", "Kent", 2005));
-        bookList.add(new Book("Design Patterns", "Fowler", 2004));
         Library library = new Library();
-        library.setBookList(bookList);
+        library.createBookList();
+
         MenuItens menuItens = new MenuItens(library);
-        System.out.println(library.printWelcome());
         menuItens.printMenuItens();
-        menuItens.showOption();
+
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+
+        while (input >= 0){
+            menuItens.showOption(input);
+            input = scanner.nextInt();
+        }
     }
 }

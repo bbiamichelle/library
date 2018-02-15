@@ -11,57 +11,55 @@ import static org.junit.Assert.assertTrue;
 
 public class LibraryTest {
 
-
     @Test
-    public void test() {
-        assertEquals(1, 1);
-    }
-
-    @Test
-    public void testWelcome(){
-        List<Book> bookList = new ArrayList<>();
-        Library library = new Library();
-        assertEquals("Welcome", library.printWelcome());
-    }
-
-    @Test
-    public void testCreateListBooks(){
-        List<Book> bookList = new ArrayList<>();
-        Book book1 = new Book("TDD","Kent", 2005);
-        Book book2 = new Book("JAVA", "Kent", 2015);
-        bookList.add(book1);
-        bookList.add(book2);
-        assertTrue(bookList.contains(book1));
-    }
-
-    @Test
-    public void testPrintBookList(){
+    public void testShowBookList(){
         List<Book> bookList = new ArrayList<>();
         Library library = new Library();
         bookList.add(new Book("TDD","Kent", 2005));
         library.setBookList(bookList);
-        assertEquals(String.format("%20s %20s %20s","TDD", "Kent", "2005" ),library.printBookList());
+
+        assertEquals(String.format("%20s %20s %20s","TDD", "Kent", "2005" ),library.showBookList());
     }
 
     @Test
-    public void testPrintManyBooks(){
+    public void testShowManyBooks(){
         List<Book> bookList = new ArrayList<>();
         Library library = new Library();
         bookList.add(new Book("TDD","Kent", 2005));
         bookList.add(new Book("Design Patterns","Fowler", 2004));
         library.setBookList(bookList);
+
         assertEquals(String.format("%20s %20s %20s\n%20s %20s %20s",
-                "TDD", "Kent", "2005", "Design Patterns", "Fowler", "2004"), library.printBookList());
+                "TDD", "Kent", "2005", "Design Patterns", "Fowler", "2004"), library.showBookList());
     }
 
     @Test
-    public void testPrintTable() {
+    public void testShowBookTable() {
         List<Book> bookList = new ArrayList<>();
         Library library = new Library();
         bookList.add(new Book("TDD","Kent", 2005));
         bookList.add(new Book("Design Patterns","Fowler", 2004));
         library.setBookList(bookList);
         assertEquals(String.format("%20s %20s %20s\n%20s %20s %20s\n%20s %20s %20s",
-                "Name","Authors", "Years", "TDD", "Kent", "2005", "Design Patterns", "Fowler", "2004"), library.printTable());
+                "Name","Authors", "Years", "TDD", "Kent", "2005", "Design Patterns", "Fowler", "2004"), library.showBookTable());
+    }
+
+    @Test
+    public void testCreateBookList(){
+        Library library = new Library();
+        library.createBookList();
+        assertEquals(2, library.bookList.size());
+
+    }
+
+
+    @Test
+    public void testCreateListBooks() {
+        List<Book> bookList = new ArrayList<>();
+        Book book1 = new Book("TDD", "Kent", 2005);
+        Book book2 = new Book("JAVA", "Kent", 2015);
+        bookList.add(book1);
+        bookList.add(book2);
+        assertTrue(bookList.contains(book1));
     }
 }
