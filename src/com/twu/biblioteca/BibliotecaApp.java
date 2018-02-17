@@ -9,14 +9,17 @@ public class BibliotecaApp {
         library.createBookList();
 
         MenuItens menuItens = new MenuItens(library);
+        menuItens.showWelcome();
         menuItens.printMenuItens();
 
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-        while (input >= 0){
+        while (input > 0){
             menuItens.showOption(input);
+            menuItens.printMenuItens();
             input = scanner.nextInt();
         }
+
     }
 }
