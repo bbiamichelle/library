@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class MenuItens  {
 
-    Midias midias;
+    Library library;
 
-    public MenuItens(Midias midias) {
-        this.midias = midias;
+    public MenuItens(Library library) {
+        this.library = library;
     }
 
     public void showWelcome(){
@@ -29,7 +29,7 @@ public class MenuItens  {
 
             switch (option) {
                 case 1:
-                    System.out.println(midias.showTable(bookList)); // mostar livros disponiveis
+                    System.out.println(library.showBook()); // mostar livros disponiveis
                     break;
 
                 case 2:
@@ -37,7 +37,7 @@ public class MenuItens  {
                     Scanner scanner = new Scanner(System.in);
                     int inputUser = scanner.nextInt();
                     String inputString= String.valueOf(inputUser);
-                    midias.borrowMidias(inputString);
+                    library.borrowBook(inputString);
                     break;
 
                 case 3:
@@ -45,15 +45,15 @@ public class MenuItens  {
                     Scanner scanner1 = new Scanner(System.in);
                     int inputReturn = scanner1.nextInt();
                     String inputReturnString = String.valueOf(inputReturn);
-                    midias.returnMidias(inputReturnString);
+                    library.returnBook(inputReturnString);
                     break;
 
                 case 4:
-                    System.out.println(midias.unavailableMidias()); // livros emprestados
+                    System.out.println(library.unavailableBook()); // livros emprestados
                     break;
 
                 case 5:
-                    System.out.println(midias.showTable()); // mostar filmes disponiveis
+                    System.out.println(library.showFilm()); // mostar filmes disponiveis
                     break;
 
                 case 6:
@@ -61,7 +61,7 @@ public class MenuItens  {
                     Scanner scanner2 = new Scanner(System.in);
                     int inputUser2 = scanner2.nextInt();
                     String inputString2= String.valueOf(inputUser2);
-                    midias.borrowMidias(inputString2);
+                    library.borrowFilm(inputString2);
                     break;
 
                 case 7:
@@ -69,11 +69,11 @@ public class MenuItens  {
                     Scanner scanner3 = new Scanner(System.in);
                     int inputReturn3 = scanner3.nextInt();
                     String inputReturnString3 = String.valueOf(inputReturn3);
-                    midias.returnMidias(inputReturnString3);
+                    library.returnFilm(inputReturnString3);
                     break;
 
                 case 8:
-                    System.out.println(midias.unavailableMidias()); // filmes emprestados
+                    System.out.println(library.unavailableFilm()); // filmes emprestados
                     break;
 
                 case 0:
