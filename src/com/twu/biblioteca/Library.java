@@ -10,6 +10,8 @@ public class Library {
     List<Film> filmList = new ArrayList<>();
     List<Film> borrowedFilms = new ArrayList<>();
 
+    private String tableHeader = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
+
     public void createBookList() {
         bookList.add(new Book("1", "TDD", "Kent", 2005));
         bookList.add(new Book("2", "Design Patterns", "Fowler", 2004));
@@ -20,113 +22,82 @@ public class Library {
         filmList.add(new Film("2", "Mochila Azul", "Gatinho", 2014));
     }
 
-    public String showFilmList(List<Film> filmList) {
+    public <T extends Midias> String showMediaTable(List<T> midiasList) {
+        return tableHeader + getMediasAsString(midiasList);
+    }
+
+    public <T extends Midias> String getMediasAsString(List<T> midiasList){
         String representation = "";
-        for (Film film : filmList) {
-            if (representation.isEmpty()) {
-                representation += film.toString();
-            } else {
-                representation += "\n" + film.toString();
+        for (Midias media : midiasList){
+            if (representation.isEmpty()){
+                representation += media.toString();
+            }else {
+                representation += "\n" + media.toString();
             }
         }
         return representation;
     }
 
-    public String showBookList(List<Book> bookList) {
-        String representation = "";
-        for (Book book : bookList) {
-            if (representation.isEmpty()) {
-                representation += book.toString();
-            } else {
-                representation += "\n" + book.toString();
-            }
-        }
-        return representation;
-    }
-
-    public String showFilmTable(List<Film> filmList) {
-        String representation = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
-        return representation + showFilmList(filmList);
-    }
-
-    public String showBookTable(List<Book> bookList) {
-        String representation = String.format("%20s %20s %20s %20s\n", "ID", "Name", "Authors", "Years");
-        return representation + showBookList(bookList);
-    }
-
-    public void borrowFilm(String id){
+    public String borrowFilm(String id){
         for (Film film : this.filmList) {
             if (id.equals(film.getId())){
                 borrowedFilms.add(film);
                 int index = filmList.indexOf(film);
                 filmList.remove(index);
-                System.out.println("Thank you! Enjoy the book");
-                return;
+                return "Thank you! Enjoy the film";
             }
         }
-        System.out.println("This book is not available");
+        return "This film is not available";
     }
 
-    public void borrowBook(String id) {
+    public String borrowBook(String id) {
         for (Book book : this.bookList) {
             if (id.equals(book.getId())) {
                 borrowedBooks.add(book);
                 int index = bookList.indexOf(book);
                 bookList.remove(index);
-                System.out.println("Thank you! Enjoy the book");
-                return;
+                return "Thank you! Enjoy the book";
             }
         }
-        System.out.println("This book is not available");
+        return "This book is not available";
     }
 
-    public void returnFilm(String id) {
+    public String returnFilm(String id) {
         for (Film film : this.borrowedFilms) {
             if (id.equals(film.getId())) {
                 filmList.add(film);
                 int index = borrowedFilms.indexOf(film);
                 borrowedFilms.remove(index);
-                System.out.println("Thank you for returning the book.");
-                return;
-
+                return "Thank you for returning the film";
             }
         }
-        System.out.println("This is not a valid book to return");
+        return "This is not a valid film to return";
     }
 
-    public void returnBook(String id){
+    public String returnBook(String id){
         for (Midias book : this.borrowedBooks) {
             if (id.equals(book.getId())) {
                 bookList.add((Book) book);
                 int index = borrowedBooks.indexOf(book);
                 borrowedBooks.remove(index);
-                System.out.println("Thank you for returning the book.");
-                return;
-
+                return "Thank you for returning the book";
             }
         }
-        System.out.println("This is not a valid book to return");
-        return;
+        return "This is not a valid book to return";
     }
 
-    public String unavailableFilm (){
-        return showFilmTable(borrowedFilms);
-    }
+    public String unavailableFilm (){ return showMediaTable(borrowedFilms); }
 
-    public String unavailableBook (){
-        return showBookTable(borrowedBooks);
-    }
+    public String unavailableBook (){ return showMediaTable(borrowedBooks); }
 
-    public String showBook(){
-        return showBookTable(bookList);
-    }
+    public String showBook(){ return showMediaTable(bookList); }
 
-    public String showFilm(){
-        return showFilmTable(filmList);
-    }
+    public String showFilm(){ return showMediaTable(filmList); }
 
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
+    public void setBookList(List<Book> bookList) { this.bookList = bookList; }
+
+    public void setFilmList(List<Film> filmList) {
+        this.filmList = filmList;
     }
 }
 

@@ -29,7 +29,7 @@ public class MenuItensTest {
 //        class MockedLibrary extends Library{
 //            public boolean printBookListWasCalled = false;
 //
-//            public String showBookList(){
+//            public String getBooksAsString(){
 //                printBookListWasCalled = true;
 //                return "ok";
 //            }
@@ -48,7 +48,7 @@ public class MenuItensTest {
 //        class MockedLibrary extends Library{
 //            public boolean printBookListWasCalled = false;
 //
-//            public String showBookList(){
+//            public String getBooksAsString(){
 //                printBookListWasCalled = true;
 //                return "ok";
 //            }
