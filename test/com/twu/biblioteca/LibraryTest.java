@@ -1,11 +1,8 @@
 package com.twu.biblioteca;
 
-
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -15,7 +12,6 @@ public class LibraryTest {
         Library library = new Library();
         library.createBookList();
         assertEquals(2, library.bookList.size());
-
     }
 
     @Test
@@ -23,7 +19,6 @@ public class LibraryTest {
         Library library = new Library();
         library.createBookList();
         assertEquals(2, library.bookList.size());
-
     }
 
     @Test
@@ -58,17 +53,15 @@ public class LibraryTest {
                 "TDD", "Kent", 2005, "2", "Design Patterns", "Fowler", 2004), library.getMediasAsString(bookList));
     }
 
-
     @Test
     public void testGivenBookListShowMediaTable(){
         List<Book> bookList = new ArrayList<>();
         Library library = new Library();
 
         bookList.add(new Book("1","TDD","Kent", 2005));
-
         library.setBookList(bookList);
         assertEquals(String.format("%20s %20s %20s %20s\n%20s %20s %20s %20d",
-                "ID", "Name","Authors", "Years", "1", "TDD", "Kent", 2005), library.showMediaTable(bookList));
+                "ID", "Name","Authors", "Years", "1", "TDD", "Kent", 2005), library.showMediaInTable(bookList));
     }
 
     @Test
@@ -78,81 +71,49 @@ public class LibraryTest {
 
         filmList.add(new Film("1", "A lua me traiu", "Bia", 2015));
         library.setFilmList(filmList);
-
         assertEquals(String.format("%20s %20s %20s %20s\n%20s %20s %20s %20d",
-                "ID", "Name","Authors", "Years", "1", "A lua me traiu", "Bia", 2015), library.showMediaTable(filmList));
-    }
-
-    @Test
-    public void testBorrowBookforUser(){
-        List<Book> bookList = new ArrayList<>();
-        List<Book> borrowedBooks = new ArrayList<>();
-        Book book1 = new Book("1","TDD", "Kent", 2005);
-        borrowedBooks.add(book1);
-        bookList.remove(book1);
-        assertTrue(borrowedBooks.contains(book1));
-        }
-
-    @Test
-    public void testBorrowFilmforUser(){
-        List<Film> filmList = new ArrayList<>();
-        List<Film> borrowedFilms = new ArrayList<>();
-        Film film1 = new Film("1", "A luz", "Bia", 2015);
-        borrowedFilms.add(film1);
-        filmList.remove(film1);
-        assertTrue(borrowedFilms.contains(film1));
+                "ID", "Name","Authors", "Years", "1", "A lua me traiu", "Bia", 2015), library.showMediaInTable(filmList));
     }
 
     @Test
     public void testSucessfulBorrowBook(){
-        // ARRANGE (Arrumar)
         Library library = new Library();
         List<Book> bookList = new ArrayList<>();
         Book book = new Book("1", "TDD", "Kent", 2005);
 
-        //ACT (agir)
         bookList.add(book);
         library.setBookList(bookList);
-        String borrowMessage = library.borrowBook("1");
+        String borrowMessage = library.borrowLibraryBook("1");
 
-        //ASSERT
         assertEquals("Thank you! Enjoy the book", borrowMessage);
         assertFalse(library.bookList.contains(book));
     }
 
     @Test
     public void testUnsuccessfulBorrowBook(){
-        // ARRANGE (Arrumar)
         Library library = new Library();
         List<Book> bookList = new ArrayList<>();
         Book book = new Book("1", "TDD", "Kent", 2005);
 
-        //ACT (agir)
         bookList.add(book);
         library.setBookList(bookList);
-        library.borrowBook("1");
+        library.borrowLibraryBook("1");
 
-        //ASSERT
-        assertEquals("This book is not available", library.borrowBook("1"));
+        assertEquals("This book is not available", library.borrowLibraryBook("1"));
         assertTrue(library.borrowedBooks.contains(book));
     }
 
-    //devolver
-    // ARRANGE (Arrumar)
     @Test
     public void testSuccessfulReturnBook(){
         Library library = new Library();
         List<Book> bookList = new ArrayList<>();
         Book book = new Book("1", "TDD", "Kent", 2005);
 
-        //ACT (agir)
-
         bookList.add(book);
         library.setBookList(bookList);
-        library.borrowBook("1");
+        library.borrowLibraryBook("1");
 
-        //assert
-        assertEquals("Thank you for returning the book", library.returnBook("1"));
+        assertEquals("Thank you for returning the book", library.returnBookToTheLibrary("1"));
         assertFalse(library.borrowedBooks.contains(book));
     }
 
@@ -162,16 +123,13 @@ public class LibraryTest {
         List<Book> bookList = new ArrayList<>();
         Book book = new Book("1", "TDD", "Kent", 2005);
 
-        //ACT (agir)
-
         bookList.add(book);
         library.setBookList(bookList);
-        library.borrowBook("1");
-        library.returnBook("1");
+        library.borrowLibraryBook("1");
+        library.returnBookToTheLibrary("1");
 
-        assertEquals("This is not a valid book to return", library.returnBook("1"));
+        assertEquals("This is not a valid book to return", library.returnBookToTheLibrary("1"));
         assertTrue(library.bookList.contains(book));
-
     }
 
 

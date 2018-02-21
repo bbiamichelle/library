@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
-public class Film extends Midias {
-
-
+public class Film extends Media {
     String id;
     String name;
     int years;
@@ -17,14 +15,6 @@ public class Film extends Midias {
 
     public String getId() { return id; }
 
-    public String getName() { return name; }
-
-    public int getYears() { return years; }
-
-    public String getAuthor() { return director; } //ve como fica a questao autor e diretor
-
     @Override
-    public String toString() {
-        return String.format("%20s %20s %20s %20d", id, name, director, years);
-    }
+    public String toString() { return String.format("%20s %20s %20s %20d", id, name, director, years); }
 }

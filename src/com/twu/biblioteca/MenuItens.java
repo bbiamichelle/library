@@ -29,51 +29,51 @@ public class MenuItens  {
 
             switch (option) {
                 case 1:
-                    System.out.println(library.showBook()); // mostar livros disponiveis
+                    System.out.println(library.showMediaInTable(library.bookList));
                     break;
 
                 case 2:
                     System.out.println("Print the ID number of the book you want to borrow");
-                    Scanner scanner = new Scanner(System.in);
-                    int inputUser = scanner.nextInt();
-                    String inputString= String.valueOf(inputUser);
-                    library.borrowBook(inputString);
+                    Scanner scannerInputBook = new Scanner(System.in);
+                    int inputBook = scannerInputBook.nextInt();
+                    String inputStringBook= String.valueOf(inputBook);
+                    System.out.println(library.borrowLibraryBook(inputStringBook));
                     break;
 
                 case 3:
                     System.out.println("Print the ID number of the book you want to return");
-                    Scanner scanner1 = new Scanner(System.in);
-                    int inputReturn = scanner1.nextInt();
-                    String inputReturnString = String.valueOf(inputReturn);
-                    library.returnBook(inputReturnString);
+                    Scanner scannerReturnBook = new Scanner(System.in);
+                    int inputReturnBook = scannerReturnBook.nextInt();
+                    String inputReturnStringBook = String.valueOf(inputReturnBook);
+                    library.returnBookToTheLibrary(inputReturnStringBook);
                     break;
 
                 case 4:
-                    System.out.println(library.unavailableBook()); // livros emprestados
+                    System.out.println(library.unavailableBook());
                     break;
 
                 case 5:
-                    System.out.println(library.showFilm()); // mostar filmes disponiveis
+                    System.out.println(library.showMediaInTable(library.filmList));
                     break;
 
                 case 6:
-                    System.out.println("Print the ID number of the book you want to borrow");
-                    Scanner scanner2 = new Scanner(System.in);
-                    int inputUser2 = scanner2.nextInt();
-                    String inputString2= String.valueOf(inputUser2);
-                    library.borrowFilm(inputString2);
+                    System.out.println("Print the ID number of the film you want to borrow");
+                    Scanner scannerInputFilm = new Scanner(System.in);
+                    int inputFilm = scannerInputFilm.nextInt();
+                    String inputStringFilm= String.valueOf(inputFilm);
+                    library.borrowLibraryFilm(inputStringFilm);
                     break;
 
                 case 7:
-                    System.out.println("Print the ID number of the book you want to return");
-                    Scanner scanner3 = new Scanner(System.in);
-                    int inputReturn3 = scanner3.nextInt();
-                    String inputReturnString3 = String.valueOf(inputReturn3);
-                    library.returnFilm(inputReturnString3);
+                    System.out.println("Print the ID number of the film you want to return");
+                    Scanner scannerReturnFilm = new Scanner(System.in);
+                    int inputReturnFilm = scannerReturnFilm.nextInt();
+                    String inputReturnStringFilm = String.valueOf(inputReturnFilm);
+                    library.returnFilmToTheLibrary(inputReturnStringFilm);
                     break;
 
                 case 8:
-                    System.out.println(library.unavailableFilm()); // filmes emprestados
+                    System.out.println(library.unavailableFilm());
                     break;
 
                 case 0:
