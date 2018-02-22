@@ -12,10 +12,14 @@ public class Library {
     List<Film> borrowedFilms = new ArrayList<>();
     List<String> stringListName = new ArrayList<>();
     List<String> stringsListPassword = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
 
     protected void creatListUserAndPassword(){
         User user1 = new User("Bia","bia@gmail.com", 99990000, "12121212");
         User user2 = new User("Marcelo", "gatinho@gmail.com", 98989898, "21212121");
+
+        userList.add(user1);
+        userList.add(user2);
 
         stringListName.add(user1.getName());
         stringListName.add(user2.getName());
@@ -25,11 +29,17 @@ public class Library {
     }
 
     boolean logado = false;
-    public boolean login (String username, String password){
-        if (stringListName.contains(username)&& stringsListPassword.contains(password)) {
+    public boolean login (String username, String password) {
+        for (User user : userList) {
+            if (username.equals(user.getName()) && password.equals(user.getPassword())) {
                 logado = true;
-                
-            }return logado;
+                System.out.println("Welcome " + user.getName());
+                System.out.println("Email: " + user.getEmail() + " Phone: " + user.getPhone());
+            }
+            System.out.println(user.getName());
+        }
+
+            return logado;
         }
 
     private String tableHeader = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
