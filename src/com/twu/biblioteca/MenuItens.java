@@ -15,13 +15,14 @@ public class MenuItens  {
     }
 
     public void login(){
-        System.out.println("Digite seu login: ");
-        Scanner scannerName = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Login:");
+        String nome = scanner.nextLine();
 
-        System.out.println("Digite sua senha: ");
-        Scanner scannerPassword = new Scanner(System.in);
+        System.out.print("Password:");
+        String password = scanner.nextLine();
 
-        System.out.println(library.login(scannerName.nextLine(), scannerPassword.nextLine()));
+        library.login(nome, password);
     }
 
     public void printMenuItens() {

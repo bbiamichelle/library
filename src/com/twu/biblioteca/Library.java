@@ -4,60 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
+    User user;
 
     List<Book> bookList = new ArrayList<>();
     List<Book> borrowedBooks = new ArrayList<>();
     List<Film> filmList = new ArrayList<>();
     List<Film> borrowedFilms = new ArrayList<>();
-    List<String> stringList = new ArrayList<>();
-    List<String> stringsPassword = new ArrayList<>();
-
+    List<String> stringListName = new ArrayList<>();
+    List<String> stringsListPassword = new ArrayList<>();
 
     protected void creatListUserAndPassword(){
         User user1 = new User("Bia","bia@gmail.com", 99990000, "12121212");
         User user2 = new User("Marcelo", "gatinho@gmail.com", 98989898, "21212121");
 
-        stringList.add(user1.getName());
-        stringList.add(user2.getName());
+        stringListName.add(user1.getName());
+        stringListName.add(user2.getName());
 
-        stringsPassword.add(user1.getPassword());
-        stringsPassword.add(user2.getPassword());
+        stringsListPassword.add(user1.getPassword());
+        stringsListPassword.add(user2.getPassword());
     }
 
     boolean logado = false;
     public boolean login (String username, String password){
-        if (stringList.contains(username)&&stringsPassword.contains(password)) {
+        if (stringListName.contains(username)&& stringsListPassword.contains(password)) {
                 logado = true;
+                
             }return logado;
         }
-
-
-//    User user1 = new User("Bia", "bia@gmail.com", 99990000, 12121212 );
-//    User user2 = new User("Marcelo", "gatinho69@gmail.com",99990909, 21212121);
-
-//    boolean logado = false;
-//
-//    public boolean login (String username, String password){
-//        userList.add(user1);
-//        userList.add(user2);
-//        for ( User user : this.userList){
-//            if (userList.contains(username)&& userList.contains(password)){
-//                logado = true; }
-//        }return logado;
-//    }
-
-
-//        boolean logado = false;
-//    String[] usuarios = {"Bia","Gatinho","Gabi"};
-//    String[] senhas = {"11111111","22222222","33333333"};
-//    public boolean login(String username, String password){
-//        for(int i = 0; i < usuarios.length; i++){
-//            if(username.equals(usuarios[i]) && password.equals(senhas[i])){
-//                logado = true;
-//            }
-//        }return logado;
-//    }
-
 
     private String tableHeader = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
 

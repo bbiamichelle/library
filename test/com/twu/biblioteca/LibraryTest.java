@@ -131,23 +131,4 @@ public class LibraryTest {
         assertEquals("This is not a valid book to return", library.returnBookToTheLibrary("1"));
         assertTrue(library.bookList.contains(book));
     }
-
-//    @Test
-//    public void testLoginForUser(){
-//        Library library = new Library();
-//        String user1 = "Bia";
-//
-//        assertTrue(library.getUserList().contains(user1));
-//    }
-//
-//    @Test
-//    public void testLoginForUseWithNameAndPassword(){
-//        Library library = new Library();
-//        String user1 = "Bia";
-//        String pass= "12121212";
-//
-//        assertTrue(library.getUserList().contains(user1));
-//        assertTrue(library.getPasswordList().contains(pass));
-//
-//    }
 }
