@@ -9,27 +9,23 @@ public class Library {
     List<Book> borrowedBooks = new ArrayList<>();
     List<Film> filmList = new ArrayList<>();
     List<Film> borrowedFilms = new ArrayList<>();
-    List<User> userList = new ArrayList<>();
-
-    String name1 = "Bia";
-    String name2 = "Marcelo";
-    String name3 = "Gabi";
-
     List<String> stringList = new ArrayList<>();
     List<String> stringsPassword = new ArrayList<>();
 
-    String pass1 = "1";
-    String pass2 = "2";
+
+    protected void creatListUserAndPassword(){
+        User user1 = new User("Bia","bia@gmail.com", 99990000, "12121212");
+        User user2 = new User("Marcelo", "gatinho@gmail.com", 98989898, "21212121");
+
+        stringList.add(user1.getName());
+        stringList.add(user2.getName());
+
+        stringsPassword.add(user1.getPassword());
+        stringsPassword.add(user2.getPassword());
+    }
 
     boolean logado = false;
-
     public boolean login (String username, String password){
-        stringList.add(name1);
-        stringList.add(name2);
-
-        stringsPassword.add(pass1);
-        stringsPassword.add(pass2);
-
         if (stringList.contains(username)&&stringsPassword.contains(password)) {
                 logado = true;
             }return logado;

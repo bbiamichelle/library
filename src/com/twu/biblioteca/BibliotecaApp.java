@@ -8,6 +8,7 @@ public class BibliotecaApp {
         Library library = new Library();
         library.createBookList();
         library.createFilmList();
+        library.creatListUserAndPassword();
 
         MenuItens menuItens = new MenuItens(library);
         menuItens.showWelcome();

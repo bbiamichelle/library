@@ -21,7 +21,7 @@ public class MenuItens  {
         System.out.println("Digite sua senha: ");
         Scanner scannerPassword = new Scanner(System.in);
 
-        System.out.println(library.login(scannerName.nextLine(),scannerPassword.nextLine()));
+        System.out.println(library.login(scannerName.nextLine(), scannerPassword.nextLine()));
     }
 
     public void printMenuItens() {
