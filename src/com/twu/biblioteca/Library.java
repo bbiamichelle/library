@@ -21,7 +21,9 @@ public class Library {
 
     public boolean login (String username){
         stringList.add(name1);
-            if (name1.equals(username)) {
+        stringList.add(name2);
+
+        if (stringList.contains(username)) {
                 logado = true;
             }return logado;
         }
