@@ -16,14 +16,21 @@ public class Library {
     String name3 = "Gabi";
 
     List<String> stringList = new ArrayList<>();
+    List<String> stringsPassword = new ArrayList<>();
+
+    String pass1 = "1";
+    String pass2 = "2";
 
     boolean logado = false;
 
-    public boolean login (String username){
+    public boolean login (String username, String password){
         stringList.add(name1);
         stringList.add(name2);
 
-        if (stringList.contains(username)) {
+        stringsPassword.add(pass1);
+        stringsPassword.add(pass2);
+
+        if (stringList.contains(username)&&stringsPassword.contains(password)) {
                 logado = true;
             }return logado;
         }

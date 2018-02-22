@@ -18,10 +18,10 @@ public class MenuItens  {
         System.out.println("Digite seu login: ");
         Scanner scannerName = new Scanner(System.in);
 
-//        System.out.println("Digite sua senha: ");
-//        Scanner scannerPassword = new Scanner(System.in);
+        System.out.println("Digite sua senha: ");
+        Scanner scannerPassword = new Scanner(System.in);
 
-        System.out.println(library.login(scannerName.nextLine()));
+        System.out.println(library.login(scannerName.nextLine(),scannerPassword.nextLine()));
     }
 
     public void printMenuItens() {
