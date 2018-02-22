@@ -132,20 +132,22 @@ public class LibraryTest {
         assertTrue(library.bookList.contains(book));
     }
 
-
-
-
-
-    // nova funcionalidade e depois refatorar todos
-
-    @Test
-    public void testCreateListFilms() {
-        List<Film> filmList = new ArrayList<>();
-        Film film1 = new Film("1", "A luz", "Biamichelle", 2015);
-        Film film2 = new Film("2", "Mochila Azul", "Marcelo", 2014);
-        filmList.add(film1);
-        filmList.add(film2);
-        assertTrue(filmList.contains(film1));
-    }
-
+//    @Test
+//    public void testLoginForUser(){
+//        Library library = new Library();
+//        String user1 = "Bia";
+//
+//        assertTrue(library.getUserList().contains(user1));
+//    }
+//
+//    @Test
+//    public void testLoginForUseWithNameAndPassword(){
+//        Library library = new Library();
+//        String user1 = "Bia";
+//        String pass= "12121212";
+//
+//        assertTrue(library.getUserList().contains(user1));
+//        assertTrue(library.getPasswordList().contains(pass));
+//
+//    }
 }

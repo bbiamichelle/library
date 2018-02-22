@@ -14,6 +14,16 @@ public class MenuItens  {
         System.out.println("\tWELCOME");
     }
 
+    public void login(){
+        System.out.println("Digite seu login: ");
+        Scanner scannerName = new Scanner(System.in);
+
+//        System.out.println("Digite sua senha: ");
+//        Scanner scannerPassword = new Scanner(System.in);
+
+        System.out.println(library.login(scannerName.nextLine()));
+    }
+
     public void printMenuItens() {
         System.out.println("\t**Menu**");
         System.out.println("Select: (1) to browse books, (2) Lend Book, (3) Return Book " +

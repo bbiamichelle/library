@@ -9,6 +9,50 @@ public class Library {
     List<Book> borrowedBooks = new ArrayList<>();
     List<Film> filmList = new ArrayList<>();
     List<Film> borrowedFilms = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
+
+    String name1 = "Bia";
+    String name2 = "Marcelo";
+    String name3 = "Gabi";
+
+    List<String> stringList = new ArrayList<>();
+
+    boolean logado = false;
+
+    public boolean login (String username){
+        stringList.add(name1);
+            if (name1.equals(username)) {
+                logado = true;
+            }return logado;
+        }
+
+
+//    User user1 = new User("Bia", "bia@gmail.com", 99990000, 12121212 );
+//    User user2 = new User("Marcelo", "gatinho69@gmail.com",99990909, 21212121);
+
+//    boolean logado = false;
+//
+//    public boolean login (String username, String password){
+//        userList.add(user1);
+//        userList.add(user2);
+//        for ( User user : this.userList){
+//            if (userList.contains(username)&& userList.contains(password)){
+//                logado = true; }
+//        }return logado;
+//    }
+
+
+//        boolean logado = false;
+//    String[] usuarios = {"Bia","Gatinho","Gabi"};
+//    String[] senhas = {"11111111","22222222","33333333"};
+//    public boolean login(String username, String password){
+//        for(int i = 0; i < usuarios.length; i++){
+//            if(username.equals(usuarios[i]) && password.equals(senhas[i])){
+//                logado = true;
+//            }
+//        }return logado;
+//    }
+
 
     private String tableHeader = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
 
@@ -89,14 +133,3 @@ public class Library {
     public void setFilmList(List<Film> filmList) { this.filmList = filmList; }
 }
 
-//    boolean logado = false;
-//    String[] usuarios = {"Bia","Gatinho","Gabi"};
-//    String[] senhas = {"11111111","22222222","33333333"};
-//    public boolean login(String username, String password){
-//        for(int i = 0; i < usuarios.length; i++){
-//            if(username.equals(usuarios[i]) && password.equals(senhas[i])){
-//                logado = true;
-//            }
-//        }
-//        return logado;
-//    }

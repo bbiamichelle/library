@@ -9,10 +9,9 @@ public class BibliotecaApp {
         library.createBookList();
         library.createFilmList();
 
-
         MenuItens menuItens = new MenuItens(library);
         menuItens.showWelcome();
-//        menuItens.login();
+        menuItens.login();
         menuItens.printMenuItens();
 
         Scanner scanner = new Scanner(System.in);
