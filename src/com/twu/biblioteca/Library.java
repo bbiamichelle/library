@@ -29,6 +29,11 @@ public class Library {
     }
 
     boolean logado = false;
+
+    public boolean logado (){
+        return this.logado;
+    }
+
     public boolean login (String username, String password) {
         for (User user : userList) {
             if (username.equals(user.getName()) && password.equals(user.getPassword())) {
@@ -36,11 +41,9 @@ public class Library {
                 System.out.println("Welcome " + user.getName());
                 System.out.println("Email: " + user.getEmail() + " Phone: " + user.getPhone());
             }
-            System.out.println(user.getName());
         }
-
-            return logado;
-        }
+        return logado;
+    }
 
     private String tableHeader = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
 

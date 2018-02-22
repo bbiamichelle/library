@@ -26,11 +26,15 @@ public class MenuItens  {
     }
 
     public void printMenuItens() {
-        System.out.println("\t**Menu**");
-        System.out.println("Select: (1) to browse books, (2) Lend Book, (3) Return Book " +
-                "\n (4) Show books unavailable (5) to browse films (6) Lend film" +
-                "\n (7) Return Film (8) Show films unavailable(0) to exit. ");
-        System.out.println("Option:");
+        if(library.logado()){
+            System.out.println("\t**Menu**");
+            System.out.println("Select: (1) to browse books, (2) Lend Book, (3) Return Book " +
+                    "\n (4) Show books unavailable (5) to browse films (6) Lend film" +
+                    "\n (7) Return Film (8) Show films unavailable(0) to exit. ");
+            System.out.println("Option:");
+        } else{
+            System.out.println("No menu option avalable");
+        }
     }
 
     public void showOption(int input){
@@ -98,17 +102,6 @@ public class MenuItens  {
     }
 
 }
-
-
-//    public void login(){
-//        System.out.println("\t Por favor,Insira seu Login (nome) e senha para continuar");
-//        System.out.println("Login:");
-//        System.out.println("Senha:");
-//        Scanner nameUser = new Scanner(System.in);
-//        Scanner senhaUser = new Scanner(System.in);
-//        library.login(nameUser.nextLine(), senhaUser.nextLine());
-//
-//    }
 
 
 
