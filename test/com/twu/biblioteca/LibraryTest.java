@@ -49,8 +49,8 @@ public class LibraryTest {
         bookList.add(new Book("2","Design Patterns","Fowler", 2004));
         library.setBookList(bookList);
 
-        assertEquals(String.format("%20s %20s %20s %20d\n%20s %20s %20s %20d", "1",
-                "TDD", "Kent", 2005, "2", "Design Patterns", "Fowler", 2004), library.getMediasAsString(bookList));
+        assertEquals(String.format("%20s %20s %20s %20d %20s\n%20s %20s %20s %20d %20s", "1",
+                "TDD", "Kent", 2005, "Livre", "2", "Design Patterns", "Fowler", 2004, "Livre"), library.getMediasAsString(bookList));
     }
 
     @Test
@@ -60,8 +60,8 @@ public class LibraryTest {
 
         bookList.add(new Book("1","TDD","Kent", 2005));
         library.setBookList(bookList);
-        assertEquals(String.format("%20s %20s %20s %20s\n%20s %20s %20s %20d",
-                "ID", "Name","Authors", "Years", "1", "TDD", "Kent", 2005), library.showMediaInTable(bookList));
+        assertEquals(String.format("%20s %20s %20s %20s %20s\n%20s %20s %20s %20d %20s",
+                "ID", "Name","Authors", "Years","Status", "1", "TDD", "Kent", 2005, "Livre"), library.showMediaInTable(bookList));
     }
 
     @Test
@@ -71,8 +71,8 @@ public class LibraryTest {
 
         filmList.add(new Film("1", "A lua me traiu", "Bia", 2015));
         library.setFilmList(filmList);
-        assertEquals(String.format("%20s %20s %20s %20s\n%20s %20s %20s %20d",
-                "ID", "Name","Authors", "Years", "1", "A lua me traiu", "Bia", 2015), library.showMediaInTable(filmList));
+        assertEquals(String.format("%20s %20s %20s %20s %20s\n%20s %20s %20s %20d %20s",
+                "ID", "Name","Authors", "Years", "Status", "1", "A lua me traiu", "Bia", 2015, "Livre"), library.showMediaInTable(filmList));
     }
 
     @Test
@@ -86,7 +86,6 @@ public class LibraryTest {
         String borrowMessage = library.borrowLibraryBook("1");
 
         assertEquals("Thank you! Enjoy the book", borrowMessage);
-        assertFalse(library.bookList.contains(book));
     }
 
     @Test
@@ -99,8 +98,7 @@ public class LibraryTest {
         library.setBookList(bookList);
         library.borrowLibraryBook("1");
 
-        assertEquals("This book is not available", library.borrowLibraryBook("1"));
-        assertTrue(library.borrowedBooks.contains(book));
+        assertEquals("This book is not available", library.borrowLibraryBook("2"));
     }
 
     @Test
@@ -114,7 +112,6 @@ public class LibraryTest {
         library.borrowLibraryBook("1");
 
         assertEquals("Thank you for returning the book", library.returnBookToTheLibrary("1"));
-        assertFalse(library.borrowedBooks.contains(book));
     }
 
     @Test
@@ -128,7 +125,60 @@ public class LibraryTest {
         library.borrowLibraryBook("1");
         library.returnBookToTheLibrary("1");
 
-        assertEquals("This is not a valid book to return", library.returnBookToTheLibrary("1"));
+        assertEquals("This is not a valid book to return", library.returnBookToTheLibrary("2"));
         assertTrue(library.bookList.contains(book));
+    }
+
+    @Test
+    public void testSucessfulBorrowFilm(){
+        Library library = new Library();
+        List<Film> filmList = new ArrayList<>();
+        Film film = new Film("1", "TDD", "Kent", 2005);
+
+        filmList.add(film);
+        library.setFilmList(filmList);
+        String borrowMessage = library.borrowLibraryFilm("1");
+
+        assertEquals("Thank you! Enjoy the film", borrowMessage);
+    }
+
+    @Test
+    public void testUnsuccessfulBorrowFilm(){
+        Library library = new Library();
+        List<Film> filmList = new ArrayList<>();
+        Film film = new Film("1", "TDD", "Kent", 2005);
+
+        filmList.add(film);
+        library.setFilmList(filmList);
+        library.borrowLibraryFilm("1");
+
+        assertEquals("This film is not available", library.borrowLibraryFilm("2"));
+    }
+
+    @Test
+    public void testSuccessfulReturnFilm(){
+        Library library = new Library();
+        List<Film> filmList = new ArrayList<>();
+        Film film = new Film("1", "TDD", "Kent", 2005);
+
+        filmList.add(film);
+        library.setFilmList(filmList);
+        library.borrowLibraryFilm("1");
+
+        assertEquals("Thank you for returning the film", library.returnFilmToTheLibrary("1"));
+    }
+
+    @Test
+    public void testUnsuccessfulReturnFilm(){
+        Library library = new Library();
+        List<Film> filmList = new ArrayList<>();
+        Film film = new Film("1", "TDD", "Kent", 2005);
+
+        filmList.add(film);
+        library.setFilmList(filmList);
+        library.borrowLibraryFilm("1");
+        library.returnFilmToTheLibrary("1");
+
+        assertEquals("This is not a valid film to return", library.returnFilmToTheLibrary("2"));
     }
 }

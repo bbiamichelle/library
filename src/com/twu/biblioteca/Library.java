@@ -4,48 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    User user;
-
     List<Book> bookList = new ArrayList<>();
-    List<Book> borrowedBooks = new ArrayList<>();
     List<Film> filmList = new ArrayList<>();
-    List<Film> borrowedFilms = new ArrayList<>();
-    List<String> stringListName = new ArrayList<>();
-    List<String> stringsListPassword = new ArrayList<>();
-    List<User> userList = new ArrayList<>();
+    private List<User> userList = new ArrayList<>();
 
-    protected void creatListUserAndPassword(){
-        User user1 = new User("Bia","bia@gmail.com", 99990000, "12121212");
-        User user2 = new User("Marcelo", "gatinho@gmail.com", 98989898, "21212121");
-
-        userList.add(user1);
-        userList.add(user2);
-
-        stringListName.add(user1.getName());
-        stringListName.add(user2.getName());
-
-        stringsListPassword.add(user1.getPassword());
-        stringsListPassword.add(user2.getPassword());
-    }
-
-    boolean logado = false;
-
-    public boolean logado (){
-        return this.logado;
-    }
-
-    public boolean login (String username, String password) {
-        for (User user : userList) {
-            if (username.equals(user.getName()) && password.equals(user.getPassword())) {
-                logado = true;
-                System.out.println("Welcome " + user.getName());
-                System.out.println("Email: " + user.getEmail() + " Phone: " + user.getPhone());
-            }
-        }
-        return logado;
-    }
-
-    private String tableHeader = String.format("%20s %20s %20s %20s\n","ID", "Name", "Authors", "Years");
+    private User user;
 
     public void createBookList() {
         bookList.add(new Book("1", "TDD", "Kent", 2005));
@@ -56,6 +19,33 @@ public class Library {
         filmList.add(new Film("1", "A luz", "Bia", 2015));
         filmList.add(new Film("2", "Mochila Azul", "Gatinho", 2014));
     }
+
+    protected void creatListUserAndPassword(){
+        User user1 = new User("11112222","Bia","bia@gmail.com", 99990000, "12121212");
+        User user2 = new User("22223333","Marcelo", "gatinho@gmail.com", 98989898, "21212121");
+
+        userList.add(user1);
+        userList.add(user2);
+    }
+
+    private boolean logado = false;
+
+    public boolean logado (){
+        return this.logado;
+    }
+
+    public boolean login (String idUser, String password) {
+        for (User user : userList) {
+            if (idUser.equals(user.getIdUser()) && password.equals(user.getPassword())) {
+                logado = true;
+                this.user = user;
+                System.out.println("Welcome " + user.getName());
+                System.out.println("Email: " + user.getEmail() + " Phone: " + user.getPhone());
+            }
+        }return logado;
+    }
+
+    private String tableHeader = String.format("%20s %20s %20s %20s %20s\n","ID", "Name", "Authors", "Years", "Status");
 
     public <T extends Media> String showMediaInTable(List<T> midiasList) {
         return tableHeader + getMediasAsString(midiasList);
@@ -74,9 +64,7 @@ public class Library {
     public String borrowLibraryFilm(String id){
         for (Film film : this.filmList) {
             if (id.equals(film.getId())){
-                borrowedFilms.add(film);
-                int index = filmList.indexOf(film);
-                filmList.remove(index);
+                film.setLed(this.user);
                 return "Thank you! Enjoy the film";
             }
         }return "This film is not available";
@@ -85,39 +73,49 @@ public class Library {
     public String borrowLibraryBook(String id) {
         for (Book book : this.bookList) {
             if (id.equals(book.getId())) {
-                borrowedBooks.add(book);
-                int index = bookList.indexOf(book);
-                bookList.remove(index);
+               book.setLed(this.user);
                 return "Thank you! Enjoy the book";
             }
         }return "This book is not available";
     }
 
     public String returnFilmToTheLibrary(String id) {
-        for (Film film : this.borrowedFilms) {
+        for (Film film : this.filmList) {
             if (id.equals(film.getId())) {
-                filmList.add(film);
-                int index = borrowedFilms.indexOf(film);
-                borrowedFilms.remove(index);
+                film.setReturn();
                 return "Thank you for returning the film";
             }
         }return "This is not a valid film to return";
     }
 
     public String returnBookToTheLibrary(String id){
-        for (Media book : this.borrowedBooks) {
+        for (Media book : this.bookList) {
             if (id.equals(book.getId())) {
-                bookList.add((Book) book);
-                int index = borrowedBooks.indexOf(book);
-                borrowedBooks.remove(index);
+                book.setReturn();
                 return "Thank you for returning the book";
             }
         }return "This is not a valid book to return";
     }
 
-    public String unavailableFilm (){ return showMediaInTable(borrowedFilms); }
+    public String unavailableFilm (){
+        List<Film> borrowedFilms = new ArrayList<>();
+        for (Film film : filmList){
+            if (!film.getToBeAvailable()){
+                borrowedFilms.add(film);
+            }
+        }
+        return showMediaInTable(borrowedFilms);
+    }
 
-    public String unavailableBook (){ return showMediaInTable(borrowedBooks); }
+    public String unavailableBook (){
+        List<Book> borrowedBooks = new ArrayList<>();
+        for (Book book : bookList){
+            if (!book.getToBeAvailable()){
+                borrowedBooks.add(book);
+            }
+        }
+        return showMediaInTable(borrowedBooks);
+    }
 
     public void setBookList(List<Book> bookList) { this.bookList = bookList; }
 

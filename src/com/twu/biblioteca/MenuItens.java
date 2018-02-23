@@ -52,7 +52,7 @@ public class MenuItens  {
                     Scanner scannerInputBook = new Scanner(System.in);
                     int inputBook = scannerInputBook.nextInt();
                     String inputStringBook= String.valueOf(inputBook);
-                    System.out.println(library.borrowLibraryBook(inputStringBook));
+                    library.borrowLibraryBook(inputStringBook);
                     break;
 
                 case 3:

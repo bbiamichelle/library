@@ -16,5 +16,13 @@ public class Film extends Media {
     public String getId() { return id; }
 
     @Override
-    public String toString() { return String.format("%20s %20s %20s %20d", id, name, director, years); }
+    public String toString() {
+        String nome;
+        if (this.possessor != null){
+            nome = this.possessor.name;
+        } else{
+            nome = "Livre";
+        }
+       return String.format("%20s %20s %20s %20d %20s", id, name, director, years, nome);
+    }
 }
