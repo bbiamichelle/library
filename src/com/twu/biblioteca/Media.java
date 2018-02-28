@@ -6,13 +6,20 @@ public abstract class Media {
     private int years;
     User possessor;
 
+    Media (String id, String name, int years){
+        this.id = id;
+        this.name = name;
+        this.years = years;
+
+    }
+
     boolean available = true;
 
     public boolean getToBeAvailable(){
         return available;
     }
 
-    public void setLed(User possessor){
+    public void lendToUser(User possessor){
         this.possessor = possessor;
         this.available = false;
     }
@@ -22,4 +29,8 @@ public abstract class Media {
         this.available = true;
     }
     public String getId() { return id; }
+
+    public String getName() { return name; }
+
+    public int getYears() { return years; }
 }

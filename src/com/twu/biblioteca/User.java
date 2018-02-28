@@ -1,11 +1,11 @@
 package com.twu.biblioteca;
 
-public class User extends Library {
-    String idUser;
-    String name;
-    String email;
-    int phone;
-    String password;
+public class User {
+    private String idUser;
+    private String name;
+    private String email;
+    private int phone;
+    private String password;
 
     public User(String idUser, String name, String email, int phone, String password) {
         this.idUser = idUser;

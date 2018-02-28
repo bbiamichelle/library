@@ -50,7 +50,7 @@ public class LibraryTest {
         library.setBookList(bookList);
 
         assertEquals(String.format("%20s %20s %20s %20d %20s\n%20s %20s %20s %20d %20s", "1",
-                "TDD", "Kent", 2005, "Livre", "2", "Design Patterns", "Fowler", 2004, "Livre"), library.getMediasAsString(bookList));
+                "TDD", "Kent", 2005, "Free", "2", "Design Patterns", "Fowler", 2004, "Free"), library.getMediasAsString(bookList));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class LibraryTest {
         bookList.add(new Book("1","TDD","Kent", 2005));
         library.setBookList(bookList);
         assertEquals(String.format("%20s %20s %20s %20s %20s\n%20s %20s %20s %20d %20s",
-                "ID", "Name","Authors", "Years","Status", "1", "TDD", "Kent", 2005, "Livre"), library.showMediaInTable(bookList));
+                "ID", "Name","Authors", "Years","Status", "1", "TDD", "Kent", 2005, "Free"), library.showMediaInTable(bookList));
     }
 
     @Test
@@ -72,7 +72,7 @@ public class LibraryTest {
         filmList.add(new Film("1", "A lua me traiu", "Bia", 2015));
         library.setFilmList(filmList);
         assertEquals(String.format("%20s %20s %20s %20s %20s\n%20s %20s %20s %20d %20s",
-                "ID", "Name","Authors", "Years", "Status", "1", "A lua me traiu", "Bia", 2015, "Livre"), library.showMediaInTable(filmList));
+                "ID", "Name","Authors", "Years", "Status", "1", "A lua me traiu", "Bia", 2015, "Free"), library.showMediaInTable(filmList));
     }
 
     @Test

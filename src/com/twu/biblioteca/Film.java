@@ -1,28 +1,21 @@
 package com.twu.biblioteca;
 
 public class Film extends Media {
-    String id;
-    String name;
-    int years;
     String director;
 
     public Film(String id, String name, String director, int years){
-        this.id = id;
-        this.name = name;
+        super(id, name, years);
         this.director = director;
-        this.years = years;
     }
-
-    public String getId() { return id; }
 
     @Override
     public String toString() {
-        String nome;
+        String possessorName;
         if (this.possessor != null){
-            nome = this.possessor.name;
+            possessorName = this.possessor.getName();
         } else{
-            nome = "Livre";
+            possessorName = "Free";
         }
-       return String.format("%20s %20s %20s %20d %20s", id, name, director, years, nome);
+       return String.format("%20s %20s %20s %20d %20s", this.getId(), this.getName(), director, this.getYears(), possessorName);
     }
 }

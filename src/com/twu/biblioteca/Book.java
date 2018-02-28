@@ -1,28 +1,23 @@
 package com.twu.biblioteca;
 
 public class Book extends Media {
-    String id;
-    String name;
-    String author;
-    int years;
+    private String author;
 
     Book(String id, String name, String author, int years) {
-        this.name = name;
+        super(id, name, years);
         this.author = author;
-        this.years = years;
-        this.id = id;
     }
-
-    public String getId() { return id; }
 
     @Override
     public String toString() {
-        String nome;
+        String possessorName;
         if (this.possessor != null){
-            nome = this.possessor.name;
+            possessorName = this.possessor.getName();
         } else{
-            nome = "Livre";
+            possessorName = "Free";
         }
-        return String.format("%20s %20s %20s %20d %20s", id, name, author, years, nome);
+        return String.format("%20s %20s %20s %20d %20s", this.getId(), this.getName(), author, this.getYears(), possessorName);
     }
+
+    public String getAuthor() { return author; }
 }

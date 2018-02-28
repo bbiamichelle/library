@@ -20,7 +20,7 @@ public class Library {
         filmList.add(new Film("2", "Mochila Azul", "Gatinho", 2014));
     }
 
-    protected void creatListUserAndPassword(){
+    protected void createListUserAndPassword(){
         User user1 = new User("11112222","Bia","bia@gmail.com", 99990000, "12121212");
         User user2 = new User("22223333","Marcelo", "gatinho@gmail.com", 98989898, "21212121");
 
@@ -28,32 +28,32 @@ public class Library {
         userList.add(user2);
     }
 
-    private boolean logado = false;
+    private boolean logged = false;
 
-    public boolean logado (){
-        return this.logado;
+    public boolean isLogged(){
+        return this.logged;
     }
 
     public boolean login (String idUser, String password) {
         for (User user : userList) {
             if (idUser.equals(user.getIdUser()) && password.equals(user.getPassword())) {
-                logado = true;
+                logged = true;
                 this.user = user;
                 System.out.println("Welcome " + user.getName());
                 System.out.println("Email: " + user.getEmail() + " Phone: " + user.getPhone());
             }
-        }return logado;
+        }return logged;
     }
 
     private String tableHeader = String.format("%20s %20s %20s %20s %20s\n","ID", "Name", "Authors", "Years", "Status");
 
-    public <T extends Media> String showMediaInTable(List<T> midiasList) {
-        return tableHeader + getMediasAsString(midiasList);
+    public <T extends Media> String showMediaInTable(List<T> mediaList) {
+        return tableHeader + getMediasAsString(mediaList);
     }
 
-    public <T extends Media> String getMediasAsString(List<T> midiasList){
+    public <T extends Media> String getMediasAsString(List<T> mediaList){
         String representation = "";
-        for (Media media : midiasList){
+        for (Media media : mediaList){
             if (representation.isEmpty()){
                 representation += media.toString();
             }else {
@@ -64,7 +64,7 @@ public class Library {
     public String borrowLibraryFilm(String id){
         for (Film film : this.filmList) {
             if (id.equals(film.getId())){
-                film.setLed(this.user);
+                film.lendToUser(this.user);
                 return "Thank you! Enjoy the film";
             }
         }return "This film is not available";
@@ -73,7 +73,7 @@ public class Library {
     public String borrowLibraryBook(String id) {
         for (Book book : this.bookList) {
             if (id.equals(book.getId())) {
-               book.setLed(this.user);
+               book.lendToUser(this.user);
                 return "Thank you! Enjoy the book";
             }
         }return "This book is not available";
@@ -97,7 +97,7 @@ public class Library {
         }return "This is not a valid book to return";
     }
 
-    public String unavailableFilm (){
+    public String showUnavailableFilm(){
         List<Film> borrowedFilms = new ArrayList<>();
         for (Film film : filmList){
             if (!film.getToBeAvailable()){
@@ -107,7 +107,7 @@ public class Library {
         return showMediaInTable(borrowedFilms);
     }
 
-    public String unavailableBook (){
+    public String showUnavailableBook(){
         List<Book> borrowedBooks = new ArrayList<>();
         for (Book book : bookList){
             if (!book.getToBeAvailable()){
@@ -120,5 +120,7 @@ public class Library {
     public void setBookList(List<Book> bookList) { this.bookList = bookList; }
 
     public void setFilmList(List<Film> filmList) { this.filmList = filmList; }
+
+
 }
 

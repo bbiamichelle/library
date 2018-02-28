@@ -26,7 +26,7 @@ public class MenuItens  {
     }
 
     public void printMenuItens() {
-        if(library.logado()){
+        if(library.isLogged()){
             System.out.println("\t**Menu**");
             System.out.println("Select: (1) to browse books, (2) Lend Book, (3) Return Book " +
                     "\n (4) Show books unavailable (5) to browse films (6) Lend film" +
@@ -64,7 +64,7 @@ public class MenuItens  {
                     break;
 
                 case 4:
-                    System.out.println(library.unavailableBook());
+                    System.out.println(library.showUnavailableBook());
                     break;
 
                 case 5:
@@ -88,7 +88,7 @@ public class MenuItens  {
                     break;
 
                 case 8:
-                    System.out.println(library.unavailableFilm());
+                    System.out.println(library.showUnavailableFilm());
                     break;
 
                 case 0:
